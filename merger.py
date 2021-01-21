@@ -17,8 +17,6 @@ def make_filechooser(title='Choose File'):
     fc.title = title
     return fc
 
-inDir = make_filechooser('Input')
-outDir = make_filechooser('Output')
 
 def merge_images(channels, output):
     """
@@ -99,3 +97,13 @@ def sort_images(files):
     f = make_fields(w)
     c = make_channels(f)
     return c
+
+def order_images(channels):
+    """
+    makes sure that all zstacks are in the correct order
+    """
+    bar = Bar('Verifying Z-Stack',max=len(channels.keys()))
+    for keys in channels.keys():
+        channels[keys].sort()
+        bar.next()
+    bar.finish()
