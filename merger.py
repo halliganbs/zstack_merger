@@ -38,7 +38,7 @@ def merge_images(channels, output):
         bar.next()
     bar.finish()
 
-def make_wells(files):
+def _make_wells(files):
     """
     sorts images by wellId
     """
@@ -53,7 +53,7 @@ def make_wells(files):
             wells[key] = [f]
     return wells
         
-def make_fields(wells):
+def _make_fields(wells):
     """
     sorts images in wells to images in wellId_fieldId
     """
@@ -69,7 +69,7 @@ def make_fields(wells):
                 fields[fk] = [a]
     return fields
 
-def make_channels(fields):
+def _make_channels(fields):
     """
     sorts wellId_fieldId to  wellId_fieldId_channelNum (1-3) typically
     """
